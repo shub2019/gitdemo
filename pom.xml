@@ -1,2 +1,3 @@
-pom.xml
-
+#!/bin/bash
+a=20
+b=10
