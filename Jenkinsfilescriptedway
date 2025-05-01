@@ -1,0 +1,11 @@
+node {
+    def mavenHome = tool name: "maven3.9.9"
+
+    stage('checkout code') {
+        git branch: 'development', credentialsId: 'ea5402c5-7de8-4043-9657-a18175d880f8', url: 'https://github.com/shub2019/maven-web-application.git'
+    }
+
+    stage('Build') {
+        sh "${mavenHome}/bin/mvn clean package"
+    }
+}
