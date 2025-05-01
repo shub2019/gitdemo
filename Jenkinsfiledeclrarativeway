@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+
+    tools {
+        maven 'maven3.9.9'
+    }
+
+    stages {
+        // Getting the code from GitHub repo
+        stage('Checkout Code') {
+            steps {
+                git branch: 'development', 
+                    credentialsId: 'ea5402c5-7de8-4043-9657-a18175d880f8', 
+                    url: 'https://github.com/shub2019/maven-web-application.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+    }
+}
